@@ -20,6 +20,10 @@ Route::get('/', [SiteController::class, 'index'])
     ->name('app.index')
 ;
 
+Route::get('/forum', [ForumController::class, 'listTopics'])
+    ->name('app.topic.list')
+;
+
 Route::get('/topic/show/{UUID}', [ForumController::class, 'showTopic'])
     ->name('app.topic.show')
     ->whereUuid('UUID')

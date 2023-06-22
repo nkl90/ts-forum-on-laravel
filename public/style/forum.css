@@ -1,0 +1,12 @@
+
+body{
+    color: #000000;
+    background: #ffffff;
+}
+
+.row>div{
+    background-color: #efefef;
+}
+.icon{
+    width: 22px;
+}

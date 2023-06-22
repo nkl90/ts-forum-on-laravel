@@ -24,6 +24,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('')
+        View::share('commit_hash', $this->getCommitHash());
+    }
+
+    private function getCommitHash(): string
+    {
+        return '1234567890';
     }
 }
