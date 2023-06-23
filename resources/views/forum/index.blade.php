@@ -1,4 +1,5 @@
 <x-layout.forum>
+    <x-slot name="title">Главная страница форума</x-slot>
     <x-slot name="content">
         <h1>Главная страница форума</h1>
         <p class="lead">Добро пожаловать!</p>
