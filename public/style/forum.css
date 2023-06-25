@@ -1,12 +1,62 @@
-
-body{
+body {
     color: #000000;
     background: #ffffff;
 }
 
-.row>div{
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.row>div {
     background-color: #efefef;
 }
-.icon{
+
+.icon {
     width: 22px;
+}
+
+.message_divider {
+    height: 26px;
+    background-color: rgb(0, 102, 153);
+    box-shadow: inset 0px 4px rgb(211, 209, 209, 0.5);
+}
+
+.row.message {
+    min-height: 200px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.login_link {
+    font-weight: 600;
+    color: black;
+    text-decoration: none;
+}
+
+.login_link:hover {
+    text-decoration: none;
+    color: blue;
+}
+
+.avatar {
+    height: 100px;
+}
+
+.experience,
+.count_message {
+    font-size: 12px;
+}
+
+.signature {
+    margin-top: 50px;
 }
