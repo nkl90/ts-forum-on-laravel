@@ -3,12 +3,12 @@
         <img class="icon" src="/forum/icons/{{ $topic['icon'] }}">
     </div>
     <div class="col-md-9 themed-grid-col">
-        <a href="{{ route('app.topic.show', ['UUID' => $topic['uuid']]) }}">
+        <a href="{{ route('app.topic.show', ['UUID' => $topic['id']]) }}">
             {{ $topic['title'] }}
         </a>
     </div>
     <div class="col-md-2 themed-grid-col">
-        <a href="{{ route('app.topic.show.page', ['UUID' => $topic['uuid'], 'page' => $topic['pages_count']]) }}">
+        <a href="{{ route('app.topic.show.page', ['UUID' => $topic['id'], 'page' => 1]) }}">
             {{ $topic['created_at'] }}
         </a>
     </div>

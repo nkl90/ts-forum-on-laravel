@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Models\Topic;
 use Illuminate\Support\Facades\View;
 use Faker\Factory;
 class ForumController extends Controller
@@ -14,10 +15,11 @@ class ForumController extends Controller
     ];
     public function showTopic(string $uuid, int $page = 1)
     {
-        return view('forum.topic_show', [
-            'uuid' => $uuid,
-            'page' => $page
-        ]);
+        $topic = Topic::query()->where('id', $uuid)->first();
+        if(!$topic) {
+            abort(404);
+        }
+        return view('forum.topic_show', ['topic' => $topic]);
     }
 
     public function createTopic()
@@ -27,18 +29,23 @@ class ForumController extends Controller
 
     public function listTopics()
     {
-        $faker = Factory::create();
-        $topics = [];
-        for($i = 0; $i < 20; $i++) {
-            $topics[] = [
-                'uuid' => $faker->uuid(), // '476ea7d2-7256-49ca-9e53-375b42879018
-                'title' => $faker->sentence(),
-                'created_at' => $faker
-                    ->dateTimeBetween('-1 year', 'now')
-                    ->format('Y-m-d'),
-                'pages_count' => rand(1, 10),
-                'icon' => $this->iconNames[rand(0, count($this->iconNames) - 1)],
-            ];
+//        $faker = Factory::create();
+//        $topics = [];
+//        for($i = 0; $i < 20; $i++) {
+//            $topics[] = [
+//                'uuid' => $faker->uuid(), // '476ea7d2-7256-49ca-9e53-375b42879018
+//                'title' => $faker->sentence(),
+//                'created_at' => $faker
+//                    ->dateTimeBetween('-1 year', 'now')
+//                    ->format('Y-m-d'),
+//                'pages_count' => rand(1, 10),
+//                'icon' => $this->iconNames[rand(0, count($this->iconNames) - 1)],
+//            ];
+//        }
+
+        $topics = Topic::query()->paginate(10);
+        if($topics->currentPage() > $topics->lastPage()) {
+            abort(404);
         }
         return view('forum.index', ['topics' => $topics]);
     }

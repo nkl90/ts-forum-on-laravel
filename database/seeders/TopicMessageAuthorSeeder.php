@@ -4,20 +4,19 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class TopicMessageAuthorSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
+        dump(__CLASS__.':'.__METHOD__);
         $this->call([
-            TopicMessageSeeder::class,
-            CarSeeder::class,
+            UserSeeder::class
         ]);
 
-        dump(__CLASS__.':'.__METHOD__);
     }
 }

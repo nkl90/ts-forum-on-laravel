@@ -29,12 +29,6 @@ Route::get('/topic/show/{UUID}', [ForumController::class, 'showTopic'])
     ->whereUuid('UUID')
 ;
 
-Route::get('/topic/show/{UUID}/page/{page}', [ForumController::class, 'showTopic'])
-    ->name('app.topic.show.page')
-    ->whereUuid('UUID')
-    ->where('page', '\d+')
-;
-
 Route::match(['get', 'post'], '/topic/create', [ForumController::class, 'createTopic'])
     ->name('app.topic.create')
 ;
