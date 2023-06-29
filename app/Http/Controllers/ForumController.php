@@ -12,13 +12,9 @@ class ForumController extends Controller
         'folder_announce.gif', 'folder_big_3.gif', 'folder_games_1.svg',
         'folder_lock.gif', 'shopping_cart_1.svg',
     ];
-    public function showTopic(string $uuid, int $page = 1)
-    {
-        return view('forum.topic_show', [
-            'uuid' => $uuid,
-            'page' => $page
-        ]);
-    }
+    private array $avatarNames = [
+        '1396559.gif', '10682549.jpg', '10703243.png', '11188810.jpg', '30902917.gif', '32740967.jpg', '41882836.jpg'
+    ];
 
     public function createTopic()
     {
@@ -41,6 +37,55 @@ class ForumController extends Controller
             ];
         }
         return view('forum.index', ['topics' => $topics]);
+    }
+
+    private function listUsers()
+    {
+        $faker = Factory::create();
+        $users = [];
+        for ($i = 0; $i < (count($this->avatarNames)); $i++) {
+            $users[] = [
+                'nick' => $faker->name(),
+                'avatar' => $this->avatarNames[$i],
+                'joined' => '14 лет 3 месяца',
+                'messagesCount' => rand(1, 1000),
+                'post-time' => $faker
+                    ->dateTimeBetween('-5 years', 'now')
+            ];
+        }
+        return $users;
+    }
+
+    private function listMessages()
+    {
+        $faker = Factory::create();
+        $users = $this->listUsers();
+        $messages = [];
+        for($i = 0; $i < 20; $i++) {
+            $user = rand(0, count($users) - 1);
+            $messages[] = [
+                'nick' => $users[$user]['nick'],
+                'avatar' => $users[$user]['avatar'],
+                'joined' => $users[$user]['joined'],
+                'messagesCount' => $users[$user]['messagesCount'],
+                'post-time' => $users[$user]['post-time'],
+                'message' => $faker->sentence(),
+            ];
+        } 
+        
+        return $messages;
+    }
+
+
+    public function showTopic(string $uuid, int $page = 1)
+    {
+        $messages = $this->listMessages();
+
+        return view('forum.topic_show', [
+            'uuid' => $uuid,
+            'page' => $page,
+            'messages' => $messages
+        ]);
     }
 
 }

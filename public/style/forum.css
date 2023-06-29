@@ -47,3 +47,29 @@ body{
 .post.row .col-md-10 {
     padding: 0px;
 }
+.post-time {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #b7c0c5;
+    padding: 0 6px;
+}
+.post-time p{
+    font-size: 10px;
+    margin-bottom: 0px;
+}
+.post-time a{
+    font-size: 11px;
+}
+.post-message {
+    font-size: 12px;
+    padding: 5px 5px 8px;
+}
+.pagination p {
+    padding: 0px;
+    font-size: 10px;
+    color: #006699;
+    margin: 5px 0px;
+}
+.pagination.bottom {
+    text-align: right;
+}
