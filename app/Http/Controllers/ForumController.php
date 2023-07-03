@@ -51,7 +51,7 @@ class ForumController extends Controller
                 'messagesCount' => rand(1, 1000),
                 'post-time' => $faker
                     ->dateTimeBetween('-5 years', 'now')
-                    ->format('d-M-y H:i')б
+                    ->format('d-M-y H:i'),
                 'signature' => $faker->sentence(rand(5, 30)),
             ];
         }
