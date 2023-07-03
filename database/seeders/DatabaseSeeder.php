@@ -17,7 +17,5 @@ class DatabaseSeeder extends Seeder
             TopicMessageSeeder::class,
             CarSeeder::class,
         ]);
-
-        dump(__CLASS__.':'.__METHOD__);
     }
 }

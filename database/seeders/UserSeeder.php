@@ -5,14 +5,16 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 use App\Models\User;
-use Database\Factories\UserFactory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class UserSeeder extends Seeder
 {
     public function run()
     {
-        dump(__CLASS__.':'.__METHOD__);
-        User::factory(1000)->create();
+        Schema::disableForeignKeyConstraints();
+        User::truncate();
+        Schema::enableForeignKeyConstraints();
+        User::factory(100)->create();
     }
 }

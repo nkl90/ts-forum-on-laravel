@@ -13,4 +13,14 @@ class TopicMessageAuthor extends Model
     {
         return $this->hasOne(Topic::class)->latestOfMany();
     }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::class);
+    }
+
+    public function setUser(User $user)
+    {
+        $this->user_id = $user->id;
+    }
 }

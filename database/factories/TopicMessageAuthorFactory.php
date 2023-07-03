@@ -14,7 +14,7 @@ class TopicMessageAuthorFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'signature' => $this->faker->sentence,
         ];
     }
 }

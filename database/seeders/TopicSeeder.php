@@ -16,7 +16,6 @@ class TopicSeeder extends Seeder
      */
     public function run()
     {
-        dump(__CLASS__.':'.__METHOD__);
         Schema::disableForeignKeyConstraints();
         Topic::truncate();
         Schema::enableForeignKeyConstraints();
