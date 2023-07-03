@@ -51,6 +51,8 @@ class ForumController extends Controller
                 'messagesCount' => rand(1, 1000),
                 'post-time' => $faker
                     ->dateTimeBetween('-5 years', 'now')
+                    ->format('d-M-y H:i')б
+                'signature' => $faker->sentence(rand(5, 30)),
             ];
         }
         return $users;
@@ -69,7 +71,7 @@ class ForumController extends Controller
                 'joined' => $users[$user]['joined'],
                 'messagesCount' => $users[$user]['messagesCount'],
                 'post-time' => $users[$user]['post-time'],
-                'message' => $faker->sentence(),
+                'message' => $faker->sentence(rand(20, 100)),
             ];
         } 
         

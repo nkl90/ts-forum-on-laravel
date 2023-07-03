@@ -3,10 +3,10 @@
         <div class="poster_info">
             <p class="nick">{{ $message['nick'] }}</p>
             <p class="avatar">
-                <img src="/forum/avatar/1396559.gif">
+                <img src="/forum/avatar/{{ $message['avatar']}}">
             </p>
-            <p class="joined"><span>Стаж:</span> 18 лет 4 месяца</p>
-            <p class="posts"><span>Сообщений:</span> 5454</p>
+            <p class="joined"><span>Стаж:</span> {{ $message['joined'] }}</p>
+            <p class="posts"><span>Сообщений:</span> {{ $message['messagesCount'] }}</p>
         </div>
         <div class="poster_btn">
             <a href="#">[Профиль]</a>
@@ -18,16 +18,16 @@
             <p>
                 <span class="">
                     <img src="https://static.rutracker.cc/templates/v1/images/icon_minipost.gif" class="icon1 hide-for-print" alt="">
-                    <a href="#">Дата</a>
+                    <a href="#">{{ $message['post-time'] }}</a>
                 </span>
                 <span>
-                    (5 лет назад, ред. 21-Май-22 08:40)
+                    (5 лет назад, ред. )
                 </span>
             </p>
             <a href="#">[Цитировать]</a>
         </div>
         <div class="post-message">
-            <p>Сообщение поста</p>
+            <p>{{ $message['message'] }}</p>
         </div>
     </div>
 </div>
