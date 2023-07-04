@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Schema;
 
 class TopicMessageAuthorSeeder extends Seeder
 {
-    private array $issetUsers = [];
-    private int $recursionCounter = 0;
+//    private array $issetUsers = [];
+//    private int $recursionCounter = 0;
     /**
      * Run the database seeds.
      *
@@ -27,27 +27,7 @@ class TopicMessageAuthorSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         TopicMessageAuthor::truncate();
         Schema::enableForeignKeyConstraints();
-
         // Заполняем таблицу topic_message_authors
-        $collection = TopicMessageAuthor::factory()->count(25)->make()
-            ->each([$this, 'setUser']);
-
-        $collection->each(function ($author) {
-            $author->save();
-        });
-    }
-
-    public function setUser(TopicMessageAuthor $author)
-    {
-        $this->recursionCounter++;
-        $random = random_int(1, 100);
-        if(!in_array($random, $this->issetUsers)) {
-            $this->issetUsers[] = $random;
-        } else {
-            $this->setUser($author);
-            return;
-        }
-        $user = User::find($random);
-        $author->setUser($user);
+        TopicMessageAuthor::factory()->times(25)->create();
     }
 }
