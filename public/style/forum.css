@@ -4,9 +4,20 @@ body{
     background: #ffffff;
 }
 
+a{
+    text-decoration: none;
+}
+  
+a:hover {
+    text-decoration: underline;
+}
+
 .row>div{
     background-color: #efefef;
 }
 .icon{
     width: 22px;
+}
+img>.avatar{
+    width: 40px;
 }

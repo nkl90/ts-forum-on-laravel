@@ -13,8 +13,36 @@ class ForumController extends Controller
         'folder_announce.gif', 'folder_big_3.gif', 'folder_games_1.svg',
         'folder_lock.gif', 'shopping_cart_1.svg',
     ];
+    private array $avatarNames = [
+        'avatar_1.jpg', 'avatar_2.jpg', 'avatar_3.jpg',
+        'avatar_4.png', 'avatar_5.jpg',
+    ];
     public function showTopic(string $uuid, int $page = 1)
     {
+        // $faker = Factory::create();
+        // $topics = [];
+        // $pages = 0;
+        // for ($i=0; $i < 10; $i++) { 
+        //     $pages++;
+        //     $topics[] = [
+        //         'title' => $faker->sentence(),
+        //         'uuid' => $uuid,
+        //         'page' => $pages,
+        //         'name' => $faker->userName(),
+        //         'experience' => $faker
+        //         ->dateTimeBetween('-1 year', 'now')
+        //         ->format('Y-m-d'),
+        //         'number_of_messages' => $faker->numberBetween(0, 100),
+        //         'date_of_publication' => $faker
+        //         ->dateTimeBetween('-1 year', 'now')
+        //         ->format('Y-m-d'),
+        //         'text' => $faker->text(),
+        //         'avatar' => $this->avatarNames[rand(0, count($this->avatarNames) - 1)],
+        //     ];
+        // }
+        // return view('forum.topic_show', [
+        //    'topics' => $topics
+        // ]);
         $topic = Topic::query()->where('id', $uuid)->first();
         if(!$topic) {
             abort(404);
@@ -47,6 +75,7 @@ class ForumController extends Controller
         if($topics->currentPage() > $topics->lastPage()) {
             abort(404);
         }
+
         return view('forum.index', ['topics' => $topics]);
     }
 
