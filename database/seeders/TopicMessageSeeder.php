@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\TopicMessage;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class TopicMessageSeeder extends Seeder
 {
@@ -19,5 +20,9 @@ class TopicMessageSeeder extends Seeder
             TopicMessageAuthorSeeder::class
         ]);
         dump(__CLASS__.':'.__METHOD__);
+        Schema::disableForeignKeyConstraints();
+        TopicMessage::truncate();
+        Schema::enableForeignKeyConstraints();
+        TopicMessage::factory()->times(10)->create();
     }
 }
