@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\Topic;
+use App\Models\TopicMessage;
+use App\Models\TopicMessageAuthor;
 use Illuminate\Support\Facades\View;
 use Faker\Factory;
 class ForumController extends Controller
@@ -19,34 +21,16 @@ class ForumController extends Controller
     ];
     public function showTopic(string $uuid, int $page = 1)
     {
-        // $faker = Factory::create();
-        // $topics = [];
-        // $pages = 0;
-        // for ($i=0; $i < 10; $i++) { 
-        //     $pages++;
-        //     $topics[] = [
-        //         'title' => $faker->sentence(),
-        //         'uuid' => $uuid,
-        //         'page' => $pages,
-        //         'name' => $faker->userName(),
-        //         'experience' => $faker
-        //         ->dateTimeBetween('-1 year', 'now')
-        //         ->format('Y-m-d'),
-        //         'number_of_messages' => $faker->numberBetween(0, 100),
-        //         'date_of_publication' => $faker
-        //         ->dateTimeBetween('-1 year', 'now')
-        //         ->format('Y-m-d'),
-        //         'text' => $faker->text(),
-        //         'avatar' => $this->avatarNames[rand(0, count($this->avatarNames) - 1)],
-        //     ];
-        // }
-        // return view('forum.topic_show', [
-        //    'topics' => $topics
-        // ]);
+        /** @var Topic|null $topic */
         $topic = Topic::query()->where('id', $uuid)->first();
         if(!$topic) {
             abort(404);
         }
+        /** @var TopicMessage $message*/
+        $message = $topic->messages->first();
+        /** @var TopicMessageAuthor $author */
+        $author = $message->author();
+        $author->messages()
         return view('forum.topic_show', ['topic' => $topic]);
     }
 

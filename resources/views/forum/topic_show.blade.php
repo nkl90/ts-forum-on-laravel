@@ -1,13 +1,16 @@
 <x-layout.forum>
+    <x-slot name="title">
+        {{ $topic->title }}
+    </x-slot>
     <x-slot name="content">
-        <h1 class="mb-3">Название топика</h1>
+        <h1 class="mb-3">{{ $topic->title }}</h1>
         <div class="container">
-            @each ('forum.topic_show_user_comment', $topic, 'topic')
+            @each ('forum.topic_show_user_comment', $topic->messages, 'message')
 
             <div class="row mb-3">
                 <div class="col-12 d-flex justify-content-end">
                     <span>Страница:</span>
-                    @each ('forum.topic_show_pagination', $topic, 'topic')
+                    {{-- @each ('forum.topic_show_pagination', $topic->messages, 'topic') --}}
                 </div>
             </div>
 

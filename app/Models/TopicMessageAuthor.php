@@ -9,18 +9,13 @@ class TopicMessageAuthor extends Model
 {
     use HasFactory;
 
-    public function latestOrder()
+    public function messages()
     {
-        return $this->hasOne(Topic::class)->latestOfMany();
+        return $this->hasMany(TopicMessage::class, 'author_id', 'id');
     }
 
-    public function getUser()
+    public function user()
     {
-        return $this->hasOne(User::class);
-    }
-
-    public function setUser(User $user)
-    {
-        $this->user_id = $user->id;
+        return $this->belongsTo(User::class);
     }
 }

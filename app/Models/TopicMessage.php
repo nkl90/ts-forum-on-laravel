@@ -15,4 +15,9 @@ class TopicMessage extends Model
         'author_id',
         'content',
     ];
+
+    public function author()
+    {
+        return $this->belongsTo(TopicMessageAuthor::class);
+    }
 }
