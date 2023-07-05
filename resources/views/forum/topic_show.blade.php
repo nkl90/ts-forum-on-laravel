@@ -2,12 +2,12 @@
     <x-slot name="content">
         <h1 class="mb-3">Название топика</h1>
         <div class="container">
-            @each ('forum.topic_show_user_comment', $topics, 'topic')
+            @each ('forum.topic_show_user_comment', $topic, 'topic')
 
             <div class="row mb-3">
                 <div class="col-12 d-flex justify-content-end">
                     <span>Страница:</span>
-                    @each ('forum.topic_show_pagination', $topics, 'topic')
+                    @each ('forum.topic_show_pagination', $topic, 'topic')
                 </div>
             </div>
 

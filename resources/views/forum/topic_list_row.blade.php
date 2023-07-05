@@ -8,7 +8,7 @@
         </a>
     </div>
     <div class="col-md-2 themed-grid-col">
-        <a href="{{ route('app.topic.show.page', ['UUID' => $topic['id'], 'page' => 1]) }}">
+        <a href="{{ route('app.topic.show', ['UUID' => $topic['id'], 'page' => 1]) }}">
             {{ $topic['created_at'] }}
         </a>
     </div>
