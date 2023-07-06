@@ -26,11 +26,6 @@ class ForumController extends Controller
         if(!$topic) {
             abort(404);
         }
-        /** @var TopicMessage $message*/
-        $message = $topic->messages->first();
-        /** @var TopicMessageAuthor $author */
-        $author = $message->author();
-        $author->messages();
         return view('forum.topic_show', ['topic' => $topic]);
     }
 
