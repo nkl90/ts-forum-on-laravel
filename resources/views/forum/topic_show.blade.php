@@ -7,9 +7,12 @@
             <p>Cтраницы: 1,2,3,4,5,6 След.</p>
         </div>
         @each('forum.topic_message_list', $messages, 'message')
-        <div class="pagination bottom row">  
-            <p>Cтраницы: 1,2,3,4,5,6 След.</p>
-        </div>
+        <div class="row mb-3">
+                <div class="col-12 d-flex justify-content-end">
+                    <span>Страница:</span>
+                    {{-- @each ('forum.topic_show_pagination', $topic->messages, 'topic') --}}
+                </div>
+            </div>
         <div>
         </div>
     </x-slot>

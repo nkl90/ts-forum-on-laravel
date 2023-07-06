@@ -36,6 +36,12 @@ class ForumController extends Controller
                 'icon' => $this->iconNames[rand(0, count($this->iconNames) - 1)],
             ];
         }
+
+        $topics = Topic::query()->paginate(10);
+        if($topics->currentPage() > $topics->lastPage()) {
+            abort(404);
+        }
+        
         return view('forum.index', ['topics' => $topics]);
     }
 
