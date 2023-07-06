@@ -5,7 +5,7 @@
             <p class="avatar">
                 <img src="/forum/avatar/{{ $message['avatar']}}">
             </p>
-            <p class="joined"><span>Стаж:</span> {{ $message['joined'] }}</p>
+            <p class="joined"><span>Стаж:</span> {{ str_replace(' назад', '', Carbon\Carbon::parse($message['joined'])->diffForHumans()) }}</p>
             <p class="posts"><span>Сообщений:</span> {{ $message['messagesCount'] }}</p>
         </div>
         <div class="poster_btn">
@@ -21,7 +21,7 @@
                     <a href="#">{{ $message['post-time'] }}</a>
                 </span>
                 <span>
-                    (5 лет назад, ред. )
+                ({{ str_replace(' назад', '', Carbon\Carbon::parse( $message['post-time'])->diffForHumans()) }})
                 </span>
             </p>
             <a href="#">[Цитировать]</a>

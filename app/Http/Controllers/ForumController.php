@@ -47,10 +47,12 @@ class ForumController extends Controller
             $users[] = [
                 'nick' => $faker->name(),
                 'avatar' => $this->avatarNames[$i],
-                'joined' => '14 лет 3 месяца',
+                'joined' => $faker
+                ->dateTimeBetween('-1 years', '-2 month')
+                ->format('d-M-y H:i'),
                 'messagesCount' => rand(1, 1000),
                 'post-time' => $faker
-                    ->dateTimeBetween('-5 years', 'now')
+                    ->dateTimeBetween('-1 month', 'now')
                     ->format('d-M-y H:i'),
                 'signature' => $faker->sentence(rand(5, 30)),
             ];
