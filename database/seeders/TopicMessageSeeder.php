@@ -19,10 +19,9 @@ class TopicMessageSeeder extends Seeder
             TopicSeeder::class,
             TopicMessageAuthorSeeder::class
         ]);
-        dump(__CLASS__.':'.__METHOD__);
         Schema::disableForeignKeyConstraints();
         TopicMessage::truncate();
         Schema::enableForeignKeyConstraints();
-        TopicMessage::factory()->times(10)->create();
+        TopicMessage::factory()->times(1000)->create();
     }
 }

@@ -33,6 +33,7 @@ Route::match(['get', 'post'], '/topic/create', [ForumController::class, 'createT
     ->name('app.topic.create')
 ;
 
-Route::post('/topic-message/create', MessageCreateAction::class)
+Route::post('/topic-message/create/{UUID}', MessageCreateAction::class)
     ->name('app.topic-message.create.process')
+    ->whereUuid('UUID')
 ;

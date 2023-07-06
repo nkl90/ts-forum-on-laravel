@@ -19,6 +19,6 @@ class TopicSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         Topic::truncate();
         Schema::enableForeignKeyConstraints();
-        Topic::factory(100)->create();
+        Topic::factory(50)->create();
     }
 }

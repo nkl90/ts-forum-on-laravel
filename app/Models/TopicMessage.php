@@ -10,7 +10,6 @@ class TopicMessage extends Model
     use HasFactory;
 
     public $fillable = [
-        'uuid',
         'topic_id',
         'author_id',
         'content',
