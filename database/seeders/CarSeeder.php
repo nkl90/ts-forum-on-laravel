@@ -15,7 +15,6 @@ class CarSeeder extends Seeder
      */
     public function run()
     {
-        dump(__CLASS__.':'.__METHOD__);
         Schema::disableForeignKeyConstraints();
         Car::truncate();
         Schema::enableForeignKeyConstraints();

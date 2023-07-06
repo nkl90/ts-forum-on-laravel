@@ -9,6 +9,8 @@ use App\Models\TopicMessage;
 use App\Models\TopicMessageAuthor;
 use Illuminate\Support\Facades\View;
 use Faker\Factory;
+use Symfony\Component\HttpFoundation\Request;
+
 class ForumController extends Controller
 {
     private array $iconNames = [
@@ -26,7 +28,11 @@ class ForumController extends Controller
         if(!$topic) {
             abort(404);
         }
-        return view('forum.topic_show', ['topic' => $topic]);
+        $topicAuthors = TopicMessageAuthor::all();
+        return view('forum.topic_show', [
+            'topic' => $topic,
+            'authors' => $topicAuthors
+        ]);
     }
 
     public function createTopic()
@@ -36,20 +42,6 @@ class ForumController extends Controller
 
     public function listTopics()
     {
-//        $faker = Factory::create();
-//        $topics = [];
-//        for($i = 0; $i < 20; $i++) {
-//            $topics[] = [
-//                'uuid' => $faker->uuid(), // '476ea7d2-7256-49ca-9e53-375b42879018
-//                'title' => $faker->sentence(),
-//                'created_at' => $faker
-//                    ->dateTimeBetween('-1 year', 'now')
-//                    ->format('Y-m-d'),
-//                'pages_count' => rand(1, 10),
-//                'icon' => $this->iconNames[rand(0, count($this->iconNames) - 1)],
-//            ];
-//        }
-
         $topics = Topic::query()->paginate(10);
         if($topics->currentPage() > $topics->lastPage()) {
             abort(404);
