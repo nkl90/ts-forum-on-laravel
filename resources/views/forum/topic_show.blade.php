@@ -10,7 +10,10 @@
         <div class="pagination bottom row">  
             <p>Cтраницы: 1,2,3,4,5,6 След.</p>
         </div>
-        <div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Введите Ваш комментарий</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
+        <button type="button" class="btn btn-primary btn-sm">Отправить</button>
     </x-slot>
 </x-layout.forum>
