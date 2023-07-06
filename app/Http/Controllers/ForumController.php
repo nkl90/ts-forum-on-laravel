@@ -9,6 +9,8 @@ use App\Models\TopicMessage;
 use App\Models\TopicMessageAuthor;
 use Illuminate\Support\Facades\View;
 use Faker\Factory;
+use App\Models\User;
+
 class ForumController extends Controller
 {
     private array $iconNames = [
@@ -56,6 +58,12 @@ class ForumController extends Controller
         }
 
         return view('forum.index', ['topics' => $topics]);
+    }
+
+    public function profileUser($id) 
+    {
+        $user = User::find($id);
+        return view('forum.profile_show', compact('user'));
     }
 
 }

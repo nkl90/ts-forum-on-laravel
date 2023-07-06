@@ -23,6 +23,6 @@ class TopicMessageSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         TopicMessage::truncate();
         Schema::enableForeignKeyConstraints();
-        TopicMessage::factory()->times(10)->create();
+        TopicMessage::factory()->times(1000)->create();
     }
 }

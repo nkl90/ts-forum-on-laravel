@@ -36,3 +36,7 @@ Route::match(['get', 'post'], '/topic/create', [ForumController::class, 'createT
 Route::post('/topic-message/create', MessageCreateAction::class)
     ->name('app.topic-message.create.process')
 ;
+
+Route::get('/forum/profile/{id}', [ForumController::class, 'profileUser'])
+    ->name('app.profile')
+;
