@@ -30,7 +30,7 @@ class ForumController extends Controller
         $message = $topic->messages->first();
         /** @var TopicMessageAuthor $author */
         $author = $message->author();
-        $author->messages()
+        $author->messages();
         return view('forum.topic_show', ['topic' => $topic]);
     }
 
