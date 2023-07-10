@@ -49,5 +49,12 @@ class ForumController extends Controller
 
         return view('forum.index', ['topics' => $topics]);
     }
+    public function showAuthorProfile(int $topic_message_author_id)
+    {
+        dump($topic_message_author_id);
+        $author = TopicMessageAuthor::whereId($topic_message_author_id)->first();
+        dump($author);
+        return view('forum.topic_message_author_profile', ['author' => $author]);
+    }
 
 }
