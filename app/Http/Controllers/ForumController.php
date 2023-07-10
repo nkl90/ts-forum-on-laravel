@@ -50,4 +50,9 @@ class ForumController extends Controller
         return view('forum.index', ['topics' => $topics]);
     }
 
+    public function showAuthorPage(integer $authorId)
+    {
+        return view('forum.user_profile_page');
+    }
+
 }
