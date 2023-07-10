@@ -24,6 +24,10 @@ Route::get('/forum', [ForumController::class, 'listTopics'])
     ->name('app.topic.list')
 ;
 
+Route::get('/forum/profile/{topic_message_author_id}', [ForumController::class, 'showAuthorProfile'])
+    ->name('app.topic-message-author.show')
+;
+
 Route::get('/topic/show/{UUID}', [ForumController::class, 'showTopic'])
     ->name('app.topic.show')
     ->whereUuid('UUID')
