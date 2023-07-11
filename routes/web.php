@@ -37,3 +37,8 @@ Route::post('/topic-message/create/{UUID}', MessageCreateAction::class)
     ->name('app.topic-message.create.process')
     ->whereUuid('UUID')
 ;
+
+Route::get('/forum/profile/{topic_message_author_id}', [ForumController::class,'showAuthorPage'])
+    ->name('app.author.page')
+    ->whereNumber('topic_message_author_id')
+;
