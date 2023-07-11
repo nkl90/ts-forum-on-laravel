@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\Topic;
+use App\Models\User;
 use App\Models\TopicMessage;
 use App\Models\TopicMessageAuthor;
 use Illuminate\Support\Facades\View;
@@ -50,9 +51,18 @@ class ForumController extends Controller
         return view('forum.index', ['topics' => $topics]);
     }
 
-    public function showAuthorPage(integer $authorId)
+    public function showAuthorPage(int $topic_message_author_id)
     {
-        return view('forum.user_profile_page');
+        
+       $user = user::query()->where('id', $topic_message_author_id)->first();
+    
+        if (!$user) {
+            abort(404);
+        }
+
+        return view('forum.user_profile_page', [
+        'user' => $user
+        ]);        
     }
 
 }
