@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\ForumController;
-use App\Http\Controllers\MessageCreateAction;
-use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,24 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [SiteController::class, 'index'])
-    ->name('app.index')
-;
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/forum', [ForumController::class, 'listTopics'])
-    ->name('app.topic.list')
-;
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/topic/show/{UUID}', [ForumController::class, 'showTopic'])
-    ->name('app.topic.show')
-    ->whereUuid('UUID')
-;
-
-Route::match(['get', 'post'], '/topic/create', [ForumController::class, 'createTopic'])
-    ->name('app.topic.create')
-;
-
-Route::post('/topic-message/create/{UUID}', MessageCreateAction::class)
-    ->name('app.topic-message.create.process')
-    ->whereUuid('UUID')
-;
+require __DIR__.'/auth.php';
