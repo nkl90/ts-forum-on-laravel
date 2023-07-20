@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property TopicMessageAuthor author
+ */
 class TopicMessage extends Model
 {
     use HasFactory;

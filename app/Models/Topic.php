@@ -33,4 +33,9 @@ class Topic extends Model
     {
         return $this->hasMany(TopicMessage::class);
     }
+
+    public function author(): TopicMessageAuthor
+    {
+        return $this->messages->first()->author;
+    }
 }
